@@ -3,7 +3,6 @@ import org.junit.jupiter.api.Test;
 import praktikum.*;
 
 public class BurgerTest {
-
     @Test
     public void burgerMoveAndRemoveIngredientTest(){
         Bun bun = new Bun("Bulka", 10.0f);
