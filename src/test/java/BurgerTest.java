@@ -1,13 +1,34 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import praktikum.*;
 
+@ExtendWith(MockitoExtension.class)
 public class BurgerTest {
+    @Mock
+    private Bun bun;
+    @Mock
+    private Ingredient ing1;
+    @Mock
+    private Ingredient ing2;
+
     @Test
     public void burgerMoveAndRemoveIngredientTest(){
-        Bun bun = new Bun("Bulka", 10.0f);
-        Ingredient ing1 = new Ingredient(IngredientType.SAUCE, "Ketchup", 15.0f);
-        Ingredient ing2 = new Ingredient(IngredientType.FILLING, "Meat", 50.0f);
+
+        Mockito.when(bun.getName()).thenReturn("Bulka");
+        Mockito.when(bun.getPrice()).thenReturn(10.0f);
+
+        Mockito.when(ing1.getName()).thenReturn("Ketchup");
+        Mockito.when(ing1.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ing1.getPrice()).thenReturn(15.0f);
+
+        Mockito.when(ing2.getName()).thenReturn("Meat");
+        Mockito.when(ing2.getType()).thenReturn(IngredientType.FILLING);
+        Mockito.when(ing2.getPrice()).thenReturn(50.0f);
+
         Burger burger = new Burger();
         burger.setBuns(bun);
         burger.addIngredient(ing1);
